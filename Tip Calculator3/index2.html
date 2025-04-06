@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Tip Calculator</title>
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #7e7979;
+    margin: 0;
+    color: #fff;
+}
+
+.container {
+    max-width: 400px;
+    padding: 25px;
+    background: #6a6868;
+    box-shadow: 10px 10px 20px #0c0c0c, -10px -10px 20px #2a2a2a;
+    border-radius: 15px;
+    text-align: center;
+}
+
+
+h1 {
+    font-size: 24px;
+    color: #ffcc00;
+    margin-bottom: 20px;
+}
+
+
+input {
+    width: 100%;
+    padding: 11px;
+    margin: 11px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    background: #b2adad;
+    color: black;
+    box-shadow: inset 5px 5px 10px #dbd8d8, inset -5px -5px 10px #929090;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: inset 3px 3px 6px #8d8b8b, inset -3px -3px 6px #929090;
+}
+
+
+#total {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    background: #ffcc00;
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #0c0c0c, -5px -5px 10px #2a2a2a;
+    margin-top: 15px;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Live Tip Calculator</h1>
+        <input type="number" id="bill" placeholder="Enter bill amount">
+        <input type="number" id="tip" placeholder="Enter tip percentage">
+        <p id="total">Total: ₹0.00</p>
+    </div>
+
+    <script>
+        function updateTotal() {
+            let billAmount = parseFloat(document.getElementById("bill").value) || 0;
+            let tipPercentage = parseFloat(document.getElementById("tip").value) || 0;
+
+            let totalAmount = billAmount * (1 + tipPercentage / 100);
+            document.getElementById("total").innerText = `Total: ₹${totalAmount.toFixed(2)}`;
+        }
+
+        document.getElementById("bill").addEventListener("input", updateTotal);
+        document.getElementById("tip").addEventListener("input", updateTotal);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator - Form Version</title>
+    <style>
+           *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        #total {
+            font-weight: bold;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Tip Calculator</h1>
+        <form id="tipForm">
+            <input type="number" id="bill" placeholder="Enter bill amount" required>
+            <input type="number" id="tip" placeholder="Enter tip percentage" required>
+            <button type="submit">Calculate</button>
+        </form>
+        <p id="total"></p>
+    </div>
+
+    <script>
+        document.getElementById("tipForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let billAmount = parseFloat(document.getElementById("bill").value);
+            let tipPercentage = parseFloat(document.getElementById("tip").value);
+
+            if (isNaN(billAmount) || isNaN(tipPercentage)) {
+                document.getElementById("total").innerText = "Please enter valid numbers!";
+                return;
+            }
+
+            let totalAmount = billAmount * (1 + tipPercentage / 100);
+            document.getElementById("total").innerText = `Your Total Bill Amount is: ₹${totalAmount.toFixed(2)}`;
+        });
+    </script>
+
+</body>
+</html>
+
+

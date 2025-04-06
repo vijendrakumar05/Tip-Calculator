@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator - Alert Version</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        </style>
+
+</head>
+<body>
+    <button onclick="calculateTip()">Calculate Tip</button>
+
+    <script>
+        function calculateTip() {
+            let billAmount = parseFloat(prompt("Enter the bill amount:"));
+            let tipPercentage = parseFloat(prompt("Enter the tip percentage:"));
+
+            if (isNaN(billAmount) || isNaN(tipPercentage)) {
+                alert("Please enter valid numbers!");
+                return;
+            }
+
+            let totalAmount = billAmount * (1 + tipPercentage / 100);
+            alert(`Your Total Bill Amount is: ₹${totalAmount.toFixed(2)}`);
+        }
+    </script>
+</body>
+</html>
